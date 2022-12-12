@@ -1,50 +1,61 @@
 #include <iostream>
 using namespace std;
 
-class Person {
+class area_cal{
     public:
-        int n1,n2;
-        char opp;
-
-    public:
-        void get_details() 
+        int squre(int a)
         {
-            cout << "Enter a Number 1:  ";
-            cin >> n1;
-            cout << "Enter a Number 2:  ";
-            cin >> n2;
-            cout << "Enter a Operater:  ";
-            cin >> opp;
+            return a*a;
+        }
+        int rect(int l,int b)
+        {
+            return l*b;
+        }
+        float cir(float r)
+        {
+            return 3.14*r*r;
+        }
+        float tri(float l,float b)
+        {
+            return 0.5*l*b;
+        }
+};
 
-            if(opp == '+')
-            {
-                cout << "Addition is: " << n1+n2 << endl;            
-            }
-            else if(opp == '-')
-            {
-                cout << "Subtraction is: " << n1-n2 << endl;
-            }
-             else if(opp == '*')
-            {
-                cout << "Multiplication is: " << n1*n2 << endl;
-            }
-             else if(opp == '/')
-            {
-                cout << "Division is: " << n1/n2 << endl;
-            }
-            else
-            {
-                cout << "Enter a Valid Oparator!!!";
-            }
+class std_cal : public area_cal {
+    
+    public:
+        int add(int n1,int n2) 
+        {
+            return n1 + n2;
+        }
+
+         int sub(int n1,int n2) 
+        {
+              return n1 - n2;
+        }
+        int multi(int n1,int n2) 
+        {
+              return n1 * n2;
+        }
+        int div(int n1,int n2) 
+        {
+              return n1 / n2;
         }
 };    
 
 int main() 
 {
     // object of Person
-    Person p;
+    std_cal p;
+       
+    printf("Addition is %d\n",p.add(20,10));   
+    printf("Subtraction is %d\n",p.sub(30,20)); 
+    printf("Multiplication is %d\n",p.multi(9,10));
+    printf("Division is %d",p.div(100,5)); 
 
-    p.get_details();
-
-      return 0;
+    printf("Area of squre is %d\n",p.squre(9)); 
+    printf("Area of rectangle is %d\n",p.rect(10,15)); 
+    printf("Area of Circle is %.2f\n",p.cir(5));
+    printf("Area of triangle is %.2f",p.tri(5,2)); 
+    
 }
